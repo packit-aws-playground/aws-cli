@@ -9,7 +9,6 @@ Summary:        Universal Command Line Environment for AWS, Version 2
 License:        ASL 2.0 and MIT
 URL:            https://github.com/aws/aws-cli
 Source0:        %{url}/archive/%{version}/%{appname}-%{version}.tar.gz
-Patch0:         awscli-2.patch
 
 BuildArch:      noarch
 BuildRequires:  python3-devel
@@ -30,16 +29,8 @@ interface to Amazon Web Services.
 
 
 %prep
-%autosetup -p1 -n %{srcname}-%{version}
+%autosetup -n %{srcname}-%{version}
 find awscli/examples/ -type f -name '*.rst' -executable -exec chmod -x '{}' +
-
-# We need to not run these test files because they import
-# jsonschema which is not able to be imported via the pytest
-# runner. It is similar to this issue: https://github.com/Julian/jsonschema/issues/584
-# This should be only temporary as once jsonschema is updated to the latest
-# version in Fedora, pytest is able to properly import it.
-rm tests/functional/botocore/test_waiter_config.py
-rm tests/functional/autocomplete/test_completion_files.py
 
 %generate_buildrequires
 %pyproject_buildrequires -r
