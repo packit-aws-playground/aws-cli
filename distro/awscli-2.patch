@@ -1,0 +1,24 @@
+diff -urN aws-cli-2.4.19-orig/setup.cfg aws-cli-2.4.19/setup.cfg
+--- aws-cli-2.4.19-orig/setup.cfg	2022-02-17 23:12:02.000000000 +0000
++++ aws-cli-2.4.19/setup.cfg	2022-02-22 04:23:16.566506328 +0000
+@@ -28,14 +28,13 @@
+ python_requires = >=3.7
+ include_package_data = True
+ install_requires =
+-    colorama>=0.2.5,<0.4.4
+-    docutils>=0.10,<0.16
+-    cryptography>=3.3.2,<3.4.0
+-    ruamel.yaml>=0.15.0,<0.16.0
+-    wcwidth<0.2.0
+-    prompt-toolkit>=3.0.24,<3.1.0
++    colorama>=0.2.5,<=0.4.4
++    docutils>=0.10,<=0.16
++    cryptography>=3.3.2,<36.0.0
++    ruamel.yaml>=0.15.0,<0.17.0
++    prompt-toolkit>=3.0.5,<3.1.0
+     distro>=1.5.0,<1.6.0
+-    awscrt==0.12.4
++    awscrt==0.12.6
+     python-dateutil>=2.1,<3.0.0
+     jmespath>=0.7.1,<1.0.0
+     urllib3>=1.25.4,<1.27
